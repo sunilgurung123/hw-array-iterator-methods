@@ -331,11 +331,78 @@ Use Array.prototype.every() to determine if every person in the devs array is
 
 let isEveryone19OrOlder = null;
 
-// const currentYear = new Date().getFullYear();
-// let isEveryone19OrOlder = devs.every(dev => {
-//   return currentYear - dev.year >= 19;
-// });
+const currentYear = new Date().getFullYear();
+isEveryone19OrOlder = devs.every(dev => currentYear - dev.year >= 19);
 
 // Check your work:
 console.log('Exercise 7 my result: ', isEveryone19OrOlder);
 console.log('Exercise 7 correct result: ', false);
+
+//=====================================================================================================================
+
+/*
+Exercise 8: Array.prototype.find()
+
+Use Array.prototype.find() to identify and retrieve the comment object with 
+a specific ID 823423 from an array of comment objects.
+
+- Assign the found comment object to the variable 'commentById'.
+*/
+
+let commentById = {};
+
+commentById = comments.find(comment => comment.id === 823423);
+
+// Check your work:
+console.log('Exercise 8 my result: ', commentById);
+console.log('Exercise 8 correct result: ', { text: 'Super good', id: 823423 });
+
+//===================================================================================================================
+/*
+Exercise 9: Array.prototype.findIndex()
+
+Determine the index of the comment that has a specific ID 123523 in an array 
+of comment objects.
+
+- Store the index in the variable 'idx'.
+*/
+
+let idx = null;
+
+idx = comments.findIndex(comment => comment.id === 123523);
+
+// Check your work:
+console.log('Exercise 9 my result: ', idx);
+console.log('Exercise 9 correct result: ', 3);
+
+//====================================================================================================================
+/*
+Level Up exercise 1: Array.prototype.reduce()
+
+Calculate the combined lifespan of all the inventors using 
+Array.prototype.reduce()
+
+- Each object in the array includes these properties: 
+  'first', 'last', 'year' (birth year), and 'passed' (year of death).
+- Use the Array.prototype.reduce() method to calculate the sum of the total 
+  years lived by all the inventors.
+- Store the total sum in the variable 'totalYearsLived'.
+
+Hints:
+
+- Inside the reduce callback function, calculate the lifespan of each inventor 
+  (passed - year).
+- Accumulate this lifespan in the 'totalYearsLived' variable.
+- Remember, reduce takes a callback function and an initial value for the 
+  accumulator.
+*/
+
+let totalYearsLived = 0;
+
+totalYearsLived = inventors.reduce((total, inventor) => {
+  return total + (inventor.passed - inventor.year);
+}, 0);
+
+// Check your work:
+console.log('Level Up 1 my result: ', totalYearsLived);
+console.log('Level Up 1 correct result: ', 861);
